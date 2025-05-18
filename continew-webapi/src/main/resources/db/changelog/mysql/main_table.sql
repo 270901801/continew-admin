@@ -358,3 +358,92 @@ CREATE TABLE IF NOT EXISTS `sys_sms_log`  (
     INDEX `idx_config_id`(`config_id`),
     INDEX `idx_create_user`(`create_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='短信日志表';
+
+
+-- ----------------------------
+-- Table structure for biz_ai_model
+-- ----------------------------
+DROP TABLE IF EXISTS `biz_ai_model`;
+CREATE TABLE `biz_ai_model` (
+  `id` bigint NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标题',
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '名称',
+  `model_bizid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模型参数id',
+  `type` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模型类型',
+  `free_flag` tinyint(1) DEFAULT NULL COMMENT '是否免费',
+  `description` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '描述',
+  `api` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'api密钥',
+  `api_url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'api地址',
+  `support_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '厂商',
+  `sort` int DEFAULT NULL COMMENT '排序',
+  `status` tinyint(1) DEFAULT NULL COMMENT '是否启用',
+  `create_user` bigint NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for biz_bookmark
+-- ----------------------------
+DROP TABLE IF EXISTS `biz_bookmark`;
+CREATE TABLE `biz_bookmark` (
+  `id` bigint NOT NULL COMMENT '主键',
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '书签名',
+  `url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '链接',
+  `download_flag` tinyint(1) DEFAULT NULL COMMENT '是否下载',
+  `type` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '类型',
+  `sort` int DEFAULT NULL COMMENT '排序',
+  `create_user` bigint NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='网页书签表';
+
+-- ----------------------------
+-- Table structure for biz_mindmap
+-- ----------------------------
+DROP TABLE IF EXISTS `biz_mindmap`;
+CREATE TABLE `biz_mindmap` (
+  `id` bigint NOT NULL,
+  `mind_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '思维导图名称',
+  `mind_json` longtext COLLATE utf8mb4_general_ci COMMENT '思维导图存储结构',
+  `create_user` bigint NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for biz_tag
+-- ----------------------------
+DROP TABLE IF EXISTS `biz_tag`;
+CREATE TABLE `biz_tag` (
+  `id` bigint NOT NULL COMMENT '主键',
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '名称',
+  `type` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标签类型',
+  `desc` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '描述',
+  `create_user` bigint NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_user` bigint DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='标签表';
+
+-- ----------------------------
+-- Table structure for biz_tag_rel
+-- ----------------------------
+DROP TABLE IF EXISTS `biz_tag_rel`;
+CREATE TABLE `biz_tag_rel` (
+  `id` bigint NOT NULL COMMENT '主键',
+  `tag_id` bigint DEFAULT NULL COMMENT '标签id',
+  `biz_id` bigint DEFAULT NULL COMMENT '业务主键',
+  `create_user` bigint NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='标签业务关联表';
+
+SET FOREIGN_KEY_CHECKS = 1;
