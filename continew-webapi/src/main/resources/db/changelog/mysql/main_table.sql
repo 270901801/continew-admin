@@ -360,6 +360,9 @@ CREATE TABLE IF NOT EXISTS `sys_sms_log`  (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='短信日志表';
 
 
+-- changeset hongsucao:1
+
+
 -- ----------------------------
 -- Table structure for biz_ai_model
 -- ----------------------------
