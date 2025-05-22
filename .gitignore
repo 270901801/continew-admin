@@ -32,6 +32,7 @@ build/
 
 ### VS Code ###
 .vscode/
+/frontend/node_modules/
 
 # Maven ignore
 .flattened-pom.xml
