@@ -53,8 +53,9 @@ const columns: ColumnItem[] = reactive([
     required: true,
     props: {
       maxLength: 30,
-    },
-    disabled: () => isUpdate.value,
+    }
+    // ,
+    // disabled: () => isUpdate.value,
   },
   {
     label: '描述',

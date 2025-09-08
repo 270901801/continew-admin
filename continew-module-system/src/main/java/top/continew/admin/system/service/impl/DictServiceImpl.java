@@ -56,8 +56,8 @@ public class DictServiceImpl extends BaseServiceImpl<DictMapper, DictDO, DictRes
     public void beforeUpdate(DictReq req, Long id) {
         String name = req.getName();
         CheckUtils.throwIf(this.isNameExists(name, id), "修改失败，[{}] 已存在", name);
-        DictDO oldDict = super.getById(id);
-        CheckUtils.throwIfNotEqual(req.getCode(), oldDict.getCode(), "不允许修改字典编码");
+//        DictDO oldDict = super.getById(id);
+//        CheckUtils.throwIfNotEqual(req.getCode(), oldDict.getCode(), "不允许修改字典编码");
     }
 
     @Override
